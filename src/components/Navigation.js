@@ -7,7 +7,7 @@ const Navigation = (props) => {
 
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [currentCompany, setCurrentCompany] = useState(null);
+    // const [currentCompany, setCurrentCompany] = useState(null);
 
 
     useEffect(() => {
@@ -22,12 +22,12 @@ const Navigation = (props) => {
     }
 
     // Declare currentCompany as a local state variable
-    const [localCurrentCompany, setLocalCurrentCompany] = useState(currentCompany);
+    // const [localCurrentCompany, setLocalCurrentCompany] = useState(currentCompany);
 
     // Update localCurrentCompany whenever currentCompany changes
-    useEffect(() => {
-        setLocalCurrentCompany(currentCompany);
-    }, [currentCompany]);
+    // useEffect(() => {
+    //     setLocalCurrentCompany(currentCompany);
+    // }, [currentCompany]);
 
     return (
         <nav className="nav-bar">
@@ -35,21 +35,13 @@ const Navigation = (props) => {
                 <Toolbar className="toolbar-nav">
                     <Typography variant="h6" style={{ flexGrow: "1" }}>
 
-                        {localCurrentCompany ? (
-                            <Link className="nav-company-title" to={`/company/${localCurrentCompany.id}`}>
-                                {localCurrentCompany.name}
+                        {props.currentCompany ? (
+                            <Link className="nav-company-title" to={`/company/${props.currentCompany.id}`}>
+                                {props.currentCompany.name}
                             </Link>
                         ) : (
                             <Link className="nav-company-title" to="/">Select a Company</Link>
                         )}
-
-                        {/* {currentCompany ? (
-                            <Link className="nav-company-title" to={`/company/${currentCompany.id}`}>
-                                {currentCompany.name}
-                            </Link>
-                        ) : (
-                            <Link className="nav-company-title" to="/">Select a Company</Link>
-                        )} */}
                         
                     </Typography>
                     <ul className="nav-list">

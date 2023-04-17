@@ -1,23 +1,21 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Navigation from "./containers/Navigation";
 import Router from "./Router";
 import { Provider } from "react-redux";
-// import store from "./redux/store";
-
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './redux/store';
+import store from "./redux/store";
 
 function App() {
+
+  const [currentCompany, setCurrentCompany] = useState(null);
+
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <Navigation />
-          <Router />
+          <Navigation currentCompany={currentCompany} />
+          <Router setCurrentCompany={setCurrentCompany}/>
         </BrowserRouter>
-      </PersistGate>
     </Provider>
   );
 }
