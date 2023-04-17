@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateCurrentCompany } from "../redux/actions";
 import { Link } from "react-router-dom";
@@ -8,13 +8,14 @@ const CompanyPicker = (props) => {
     
     const dispatch = useDispatch();
 
+    // This is current updating my State
     const handleCurrentCompany = (company) => {
         const currentCompany = { id: company.company_id, name: company.company_name };
+        // console.log("Inside the Handle Function - Pick:", currentCompany)
         dispatch(updateCurrentCompany(currentCompany));
-    };
-
-    console.log("The current props inside of the CompanyPicker:", props)
-    console.log("The props for the available_companies", props.available_companies)
+        // setCurrentCompany(currentCompany);
+        localStorage.setItem('currentCompany', JSON.stringify(currentCompany))
+    };    
 
     return (
         <div className="company-picker">

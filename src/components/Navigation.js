@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, Typography } from "@mui/material";
+import HomeIcon from "./HomeIcon"
 import cookie from "cookie";
 
 const Navigation = (props) => {
 
+    
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    // const [currentCompany, setCurrentCompany] = useState(null);
+    const currentCompany = JSON.parse(localStorage.getItem('currentCompany'))
 
 
     useEffect(() => {
@@ -18,29 +20,28 @@ const Navigation = (props) => {
     function handleLogout() {
         document.cookie = cookie.serialize("loggedIn", false, { maxAge: 0 });
         navigate("/login");
+        localStorage.clear();
         window.location.reload(false);
     }
 
-    // Declare currentCompany as a local state variable
-    // const [localCurrentCompany, setLocalCurrentCompany] = useState(currentCompany);
-
-    // Update localCurrentCompany whenever currentCompany changes
-    // useEffect(() => {
-    //     setLocalCurrentCompany(currentCompany);
-    // }, [currentCompany]);
+    function handleChangeCompany() {
+        localStorage.clear();
+    }
 
     return (
         <nav className="nav-bar">
             <AppBar position="relative">
                 <Toolbar className="toolbar-nav">
                     <Typography variant="h6" style={{ flexGrow: "1" }}>
-
-                        {props.currentCompany ? (
-                            <Link className="nav-company-title" to={`/company/${props.currentCompany.id}`}>
-                                {props.currentCompany.name}
-                            </Link>
+                        {currentCompany ? (
+                            <>
+                                <HomeIcon />
+                                <Link className="nav-company-title" to={`/company/${currentCompany.id}`}>
+                                    {currentCompany.name}
+                                </Link>
+                            </>
                         ) : (
-                            <Link className="nav-company-title" to="/">Select a Company</Link>
+                            <Link className="nav-company-title" to="/" onClick={handleChangeCompany}>Select a Company</Link>
                         )}
                         
                     </Typography>

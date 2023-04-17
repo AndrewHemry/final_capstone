@@ -21,7 +21,10 @@ const Router = () => {
     return (
         <Routes>
             <Route path="/login" element={<Login/>}/>
+            {/* Add setCurrentCompany */}
+            {/* <Route path="/" element={<ProtectedRoute component={() => <CompanyPicker setCurrentCompany={setCurrentCompany} />} />}/> */}
             <Route path="/" element={<ProtectedRoute component={CompanyPicker} />}/>
+            {/* <Route path="/company/:id" element={<ProtectedRoute component={() => <CompanyBranches setCurrentCompany={setCurrentCompany} />} />}/> */}
             <Route path="/company/:id" element={<ProtectedRoute component={CompanyBranches} />}/>
             {/* Add Route for Branch Details, which will be the directory for X branch */}
         </Routes>
