@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+/* NAV BAR */
+
+.nav-company-title {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-list-item {
+  display: inline;
+  margin: 10px;
+}
+
+.nav-list-link {
+  color: whitesmoke;
+  text-decoration: none;
+}
