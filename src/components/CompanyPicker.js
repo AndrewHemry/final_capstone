@@ -3,10 +3,6 @@ import { useDispatch } from "react-redux";
 import { updateCurrentCompany } from "../redux/actions";
 import { Link } from "react-router-dom";
 import { Table, TableContainer, TableBody, TableRow, TableCell, Paper } from "@mui/material";
-// import SelectedCompany from "./SelectedCompany";
-// import TableRow from "@mui/material/TableRow";
-// import TableCell from "@mui/material/TableCell";
-// import cookie from 'cookie';
 
 const CompanyPicker = (props) => {
     

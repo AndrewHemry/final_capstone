@@ -21,4 +21,3 @@ const current_company = (state = null, action) => {
 }
 
 export default combineReducers({ user, available_companies, branches, current_company })
-// export default combineReducers({ user, branches, employees, available_companies });
