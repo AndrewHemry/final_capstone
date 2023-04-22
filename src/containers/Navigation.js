@@ -5,7 +5,8 @@ const mapStateToProps = (state) => {
     return {
         user: state.user,
         available_companies: state.available_companies,
-        current_company: state.current_company
+        current_company: state.current_company,
+        branches: state.branches
     }
 }
 

@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router";
 import cookie from "cookie";
 import Login from "./components/Login";
 import CompanyPicker from "./containers/CompanyPicker";
-import CompanyBranches from "./containers/CompanyBranches";
+import BranchDetails from "./containers/BranchDetails";
 
 const checkAuth = () => {
     const cookies = cookie.parse(document.cookie);
@@ -22,10 +22,12 @@ const Router = () => {
         <Routes>
             <Route path="/login" element={<Login/>}/>
             {/* Add setCurrentCompany */}
-            {/* <Route path="/" element={<ProtectedRoute component={() => <CompanyPicker setCurrentCompany={setCurrentCompany} />} />}/> */}
             <Route path="/" element={<ProtectedRoute component={CompanyPicker} />}/>
-            {/* <Route path="/company/:id" element={<ProtectedRoute component={() => <CompanyBranches setCurrentCompany={setCurrentCompany} />} />}/> */}
-            <Route path="/company/:id" element={<ProtectedRoute component={CompanyBranches} />}/>
+            {/* This should be the CompanyDetails and return the Directory, similar to BranchDetails */}
+            {/* <Route path="/company/:company_id" element={<ProtectedRoute component={BranchPicker} />}/> */}
+            {/* Add Route for Company Details, which will be the directory for X company */}
+            {/* Have a seperate route for 'inactive' users for the Company Details */}
+            <Route path="/company/:company_id/branch/:branch_id" element={<ProtectedRoute component={BranchDetails} />}/>
             {/* Add Route for Branch Details, which will be the directory for X branch */}
         </Routes>
     )

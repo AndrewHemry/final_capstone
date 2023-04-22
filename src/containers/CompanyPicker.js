@@ -3,7 +3,8 @@ import CompanyPicker from "../components/CompanyPicker";
 
 const mapStateToProps = (state) => {
     return {
-        available_companies: state.available_companies
+        available_companies: state.available_companies,
+        branches: state.branches
     }
 }
 

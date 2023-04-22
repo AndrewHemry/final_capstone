@@ -39,9 +39,36 @@
 
 /* NAV BAR */
 
+.toolbar-nav {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* .nav-company {
+  display: grid;
+  grid-template-columns: 0.25fr 1.75fr;
+} */
+
+.nav-company {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .nav-company-title {
   color: whitesmoke;
   text-decoration: none;
+}
+
+.nav-link-default {
+  color: whitesmoke;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-branch-picker {
+  /* padding: 200px; */
+  width: 175px;
 }
 
 .nav-list {
@@ -56,4 +83,9 @@
 .nav-list-link {
   color: whitesmoke;
   text-decoration: none;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  margin-top: 35px;
 }

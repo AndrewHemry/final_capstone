@@ -29,13 +29,17 @@ export default {
             "id": 55,
             "first_name": "Logan",
             "last_name": "Hemry",
-            "employee_email": "Logan@gmail.com"
+            "employee_email": "Logan@gmail.com",
+            "job_title": "Job Title B",
+            "is_active": false
         },
         {
             "id": 56,
             "first_name": "Tay",
             "last_name": "Day",
-            "employee_email": "Tay@gmail.com"
+            "employee_email": "Tay@gmail.com",
+            "job_title": "Job Title A",
+            "is_active": true
         }
     ],
 
