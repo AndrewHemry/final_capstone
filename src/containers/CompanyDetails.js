@@ -3,8 +3,11 @@ import CompanyDetails from "../components/CompanyDetails";
 
 const mapStateToProps = (state) => {
     return {
-        employees: state.employees
+        employees: state.employees,
+        admins: state.admins
     }
 }
+
+// Remove Admin here
 
 export default connect(mapStateToProps)(CompanyDetails)

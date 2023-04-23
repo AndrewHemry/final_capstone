@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import { Button, TextField, Dialog, DialogContent, DialogTitle } from '@mui/material'
 
-class AddAdmin extends Component {
+class AddEmployee extends Component {
     state = {
         open: false,
         first_name: '',
         last_name: '',
-        email_address: ''
+        employee_email: '',
+        job_title: '',
+        // ACTION ITEM - Will my database handle this since I'm setting it to default as 'yes' or 1?
+        is_active: true
     }
 
     toggleDialog = () => this.setState({ open: !this.state.open })
@@ -21,10 +24,10 @@ class AddAdmin extends Component {
         e.preventDefault()
         const payload = { ...this.state }
         // The payload ID should be handled by the server so auto-assign the ID, right?
-        payload.id = this.props.adminTotal + 1
+        payload.id = this.props.employeeTotal + 1
         delete payload.open
-        console.log("THE ADMIN", payload)
-        this.props.addAdmin(payload)
+        console.log("THE EMPLOYEE PAYLOAD", payload)
+        this.props.addEmployee(payload)
         // This.setState to close the dialog box once submitted
         this.setState({ open: false })
     }
@@ -34,7 +37,8 @@ class AddAdmin extends Component {
             this.setState({
                 first_name: '',
                 last_name: '',
-                email_address: ''
+                employee_email: '',
+                job_title: ''
             })
         }
     }
@@ -45,15 +49,15 @@ class AddAdmin extends Component {
                 <div style={{ textAlign: 'center' }}>
                     <Button
                         variant="contained"
-                        className="add-admin"
+                        className="add-employee"
                         onClick={this.toggleDialog}
                     >
-                        Add Admin
+                        Add Employee
                     </Button>
                 </div>
                 <div>
                     <Dialog open={this.state.open} onClose={this.toggleDialog} >
-                        <DialogTitle>Add New Admin</DialogTitle>
+                        <DialogTitle>Add New Employee</DialogTitle>
                         <DialogContent>
                             <form 
                                 onSubmit={this.handleSubmit}
@@ -71,9 +75,15 @@ class AddAdmin extends Component {
                                     onChange={this.handleTextChange} 
                                     required />
                                 <TextField 
-                                    id="email_address" 
+                                    id="employee_email" 
                                     placeholder="Email Address" 
                                     value={this.state.email_address} 
+                                    onChange={this.handleTextChange} 
+                                    required />
+                                <TextField 
+                                    id="job_title" 
+                                    placeholder="Job Title" 
+                                    value={this.state.job_title} 
                                     onChange={this.handleTextChange} 
                                     required />
                                 <br />
@@ -87,4 +97,4 @@ class AddAdmin extends Component {
     }
 }
 
-export default AddAdmin;
+export default AddEmployee;

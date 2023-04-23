@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import { Button, TextField, Dialog, DialogContent, DialogTitle } from '@mui/material'
 
-class AddAdmin extends Component {
+class AddBranch extends Component {
+
+    // TODO: Need Company ID, Branch ID, Branch Name
+    
     state = {
         open: false,
-        first_name: '',
-        last_name: '',
-        email_address: ''
+        branch_name: ''
+        // May not need the company_id here
     }
 
     toggleDialog = () => this.setState({ open: !this.state.open })
@@ -19,12 +21,14 @@ class AddAdmin extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const currentCompany = JSON.parse(localStorage.getItem('currentCompany'))
         const payload = { ...this.state }
         // The payload ID should be handled by the server so auto-assign the ID, right?
-        payload.id = this.props.adminTotal + 1
+        payload.branch_id = this.props.branchTotal + 1
+        payload.company_id = currentCompany.company_id
         delete payload.open
-        console.log("THE ADMIN", payload)
-        this.props.addAdmin(payload)
+        console.log("THE BRANCH PAYLOD", payload)
+        this.props.addBranch(payload)
         // This.setState to close the dialog box once submitted
         this.setState({ open: false })
     }
@@ -32,9 +36,7 @@ class AddAdmin extends Component {
     componentDidUpdate = (prevProps, prevState) => {
         if (prevState.open !== this.state.open) {
             this.setState({
-                first_name: '',
-                last_name: '',
-                email_address: ''
+                branch_name: ''
             })
         }
     }
@@ -45,38 +47,26 @@ class AddAdmin extends Component {
                 <div style={{ textAlign: 'center' }}>
                     <Button
                         variant="contained"
-                        className="add-admin"
+                        className="add-branch"
                         onClick={this.toggleDialog}
                     >
-                        Add Admin
+                        Add Branch
                     </Button>
                 </div>
                 <div>
                     <Dialog open={this.state.open} onClose={this.toggleDialog} >
-                        <DialogTitle>Add New Admin</DialogTitle>
+                        <DialogTitle>Add New Branch</DialogTitle>
                         <DialogContent>
                             <form 
                                 onSubmit={this.handleSubmit}
                                 style={{ display: 'flex', flexDirection: 'column', width: '350px' }}>
                                 <TextField 
-                                    id="first_name" 
-                                    placeholder="First Name" 
-                                    value={this.state.first_name} 
+                                    id="branch_name" 
+                                    placeholder="Branch Name" 
+                                    value={this.state.branch_name} 
                                     onChange={this.handleTextChange} 
-                                    required />
-                                <TextField 
-                                    id="last_name" 
-                                    placeholder="Last Name" 
-                                    value={this.state.last_name} 
-                                    onChange={this.handleTextChange} 
-                                    required />
-                                <TextField 
-                                    id="email_address" 
-                                    placeholder="Email Address" 
-                                    value={this.state.email_address} 
-                                    onChange={this.handleTextChange} 
-                                    required />
-                                <br />
+                                    required 
+                                />
                                 <Button variant="contained" color="primary" type="submit">Submit</Button>
                             </form>
                         </DialogContent>
@@ -87,4 +77,4 @@ class AddAdmin extends Component {
     }
 }
 
-export default AddAdmin;
+export default AddBranch;

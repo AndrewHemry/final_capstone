@@ -2,7 +2,6 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Navigation from "./containers/Navigation";
-// import BranchPicker from "./containers/BranchPicker";
 import Router from "./Router";
 import { Provider } from "react-redux";
 import store from "./redux/store";

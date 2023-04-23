@@ -22,19 +22,11 @@ const Router = () => {
     return (
         <Routes>
             <Route path="/login" element={<Login/>}/>
-            {/* Add setCurrentCompany */}
             <Route path="/" element={<ProtectedRoute component={CompanyPicker} />}/>
             <Route path="/company/:company_id" element={<ProtectedRoute component={CompanyDetails} />}/>
-            {/* Have a seperate route for 'inactive' users for the Company Details */}
             <Route path="/company/:company_id/branch/:branch_id" element={<ProtectedRoute component={BranchDetails} />}/>
-            {/* Add Route for Branch Details, which will be the directory for X branch */}
         </Routes>
     )
 }
 
 export default Router;
-
-// Examples
-{/* <Route path="/login" element={<Login/>}/> */}
-{/* <Route path="/business/:id" element={<Details/>} /> */}
-{/* <Route path="/add" element={<ProtectedRoute component={AddBusiness} />} /> */}

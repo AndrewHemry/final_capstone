@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import BranchDetails from "../components/BranchDetails";
+import CompanyEmployees from "../components/CompanyEmployees";
 
 const mapStateToProps = (state) => {
     return {
@@ -7,6 +7,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-// Remove Admin here
-
-export default connect(mapStateToProps)(BranchDetails)
+export default connect(mapStateToProps)(CompanyEmployees)

@@ -52,5 +52,20 @@ export default {
             "company_id": 2,
             "company_name": "Company 2"
         }
+    ],
+
+    admins: [
+        {
+            "id": 1,
+            "first_name": "Peyton",
+            "last_name": "Moss",
+            "email_address": "Peyton@gmail.com"
+        },
+        {
+            "id": 2,
+            "first_name": "Alaysha",
+            "last_name": "Night",
+            "email_address": "Alaysha@gmail.com"
+        }
     ]
 }

@@ -71,8 +71,12 @@
   width: 175px;
 }
 
+/* ACTION ITEM - I want to update this to a hamburger */
 .nav-list {
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .nav-list-item {

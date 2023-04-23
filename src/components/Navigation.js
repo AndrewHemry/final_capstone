@@ -4,6 +4,9 @@ import { AppBar, Toolbar, Typography } from "@mui/material";
 import HomeIcon from "./HomeIcon"
 import cookie from "cookie";
 import BranchPicker from "./BranchPicker"
+import AddAdmin from "../containers/AddAdmin";
+import AddBranch from "../containers/AddBranch";
+import AddEmployee from "../containers/AddEmployee"
 
 const Navigation = (props) => {
 
@@ -52,9 +55,7 @@ const Navigation = (props) => {
                                 >
                                     {currentCompany.company_name}
                                 </Link>
-                                <BranchPicker 
-                                branches={props.branches}
-                                />
+                                <BranchPicker branches={props.branches} />
                             </div>
                         ) : (
 
@@ -67,14 +68,21 @@ const Navigation = (props) => {
                         {/* IF I am inside of a branch, I should not show this... only Add Employee */}
                         {currentCompany ? (
                             <li className="nav-list-item">
-                                <Link className="nav-list-link" to="/">Add Branch</Link>
+                                <AddBranch branchTotal={props.branches.length} />
                             </li>
                         ) : ( 
                             null 
                         )}
                         {currentCompany ? (
                             <li className="nav-list-item">
-                                <Link className="nav-list-link" to="/add">Add Employee</Link>
+                                <AddEmployee employeeTotal={props.employees.length} />
+                            </li>
+                        ) : ( 
+                            null 
+                        )}
+                        {currentCompany ? (
+                            <li className="nav-list-item">
+                                <AddAdmin adminTotal={props.admins.length}/>
                             </li>
                         ) : ( 
                             null 
