@@ -7,7 +7,6 @@ import BranchPicker from "./BranchPicker"
 
 const Navigation = (props) => {
 
-    
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const currentCompany = JSON.parse(localStorage.getItem('currentCompany'))
@@ -33,8 +32,10 @@ const Navigation = (props) => {
     }
 
     // This is clearing the localStorage branch data
+    // ACTION ITEM - I'm getting an error that props.setCurrentBranch is not a function
     function handleClearBranch() {
         localStorage.removeItem("currentBranch");
+        props.setCurrentBranch('');
     }
 
     return (
@@ -45,10 +46,15 @@ const Navigation = (props) => {
                         {currentCompany ? (
                             <div className="nav-company">
                                 <HomeIcon />
-                                <Link className="nav-company-title" onClick={handleClearBranch} to={`/company/${currentCompany.company_id}`}>
+                                <Link className="nav-company-title" 
+                                    onClick={handleClearBranch} 
+                                    to={`/company/${currentCompany.company_id}`}
+                                >
                                     {currentCompany.company_name}
                                 </Link>
-                                <BranchPicker branches={props.branches}/>
+                                <BranchPicker 
+                                branches={props.branches}
+                                />
                             </div>
                         ) : (
 

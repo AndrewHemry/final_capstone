@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Table, TableHead, TableContainer, TableBody, TableRow, TableCell, Paper } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -24,6 +24,7 @@ const CompanyDetails = (props) => {
                         <TableCell>Last Name</TableCell>
                         <TableCell>Email</TableCell>
                         <TableCell>Job Title</TableCell>
+                        {/* Active Status will eventually be removed */}
                         <TableCell align="left">Active Status</TableCell>
                         <TableCell align="left">Inactivate</TableCell>
                     </TableRow>
@@ -42,7 +43,7 @@ const CompanyDetails = (props) => {
                             <TableCell align="left">{employee.last_name}</TableCell>
                             <TableCell align="left">{employee.employee_email}</TableCell>
                             <TableCell align="left">{employee.job_title}</TableCell>
-                            {employee.is_active == true ? (
+                            {employee.is_active === true ? (
                                 <TableCell align="left">Active</TableCell>
                             ) : (
                                 <TableCell align="left">False</TableCell>
