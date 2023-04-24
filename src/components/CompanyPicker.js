@@ -11,17 +11,17 @@ const CompanyPicker2 = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [data, setData] = useState([]);
+    const [localCompanies, setLocalCompanies] = useState([]);
 
     useEffect(() => {
         axios
-          .get(process.env.baseURL+"/company")
+          .get(process.env.REACT_APP_listCompanies)
           .then((response) => {
-            setData(response.data)
+            setLocalCompanies(response.data)
             console.log(response.data)
         })
           .catch((error) => console.error(error));
-      }, [data]);
+      }, []);
 
     // This is currently updating my State
     const handleCurrentCompany = (company) => {
@@ -40,7 +40,8 @@ const CompanyPicker2 = (props) => {
                     labelId="demo-simple-select-label"
                     label="Current Company"
                 >
-                    {props.available_companies.map((company, idx) => (
+
+                    {localCompanies.map((company, idx) => (
                         <MenuItem
                             key={company.company_id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -58,4 +59,3 @@ const CompanyPicker2 = (props) => {
 }
 
 export default CompanyPicker2;
-// export default CompanyPicker;

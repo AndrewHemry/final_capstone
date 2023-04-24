@@ -9,8 +9,21 @@ const BranchPicker = (props) => {
 
     const navigate = useNavigate();
     const currentCompany = JSON.parse(localStorage.getItem('currentCompany'));
+    const companyID = currentCompany.company_id
 
     const [selectedBranch, setSelectedBranch] = useState('');
+
+    const [localBranches, setLocalBranches] = useState([]);
+
+    useEffect(() => {
+        axios
+          .get(`https://final-capstone-backend-seven.vercel.app/company/${companyID}/branch`)
+          .then((response) => {
+            setLocalBranches(response.data)
+            console.log(response.data)
+        })
+          .catch((error) => console.error(error));
+      }, []);
 
     // This is updating the state when the page is refreshed based on the localStorage data
     useEffect(() => {
@@ -55,7 +68,6 @@ const BranchPicker = (props) => {
                                 {branch.branch_name}
                         </MenuItem>
                         ))
-
                     }
                 </Select>
             </FormControl>

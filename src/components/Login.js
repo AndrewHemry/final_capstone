@@ -6,28 +6,52 @@ import cookie from "cookie";
 const Login = (props) => {
     const navigate = useNavigate();
 
-    const [state, setState] = useState({
-        username: "",
-        password: ""
-    })
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    const handleTextChange = (e) => {
-        const { name, value } = e.target;
-        setState((prevState) => {
-            return {
-                ...prevState,
-                // I have a comma here in my other code but why?
-                [name]: value
-            }
-        })
-    }
+    // const [state, setState] = useState({
+    //     username: "",
+    //     password: ""
+    // })
 
-    const login = (e) => {
+    // const handleTextChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setState((prevState) => {
+    //         return {
+    //             ...prevState,
+    //             // I have a comma here in my other code but why?
+    //             [name]: value
+    //         }
+    //     })
+    // }
+
+    const login = async (e) => {
         e.preventDefault();
-        document.cookie = cookie.serialize("loggedIn", true, { maxAge: 600});
-        navigate("/");
-        window.location.reload(false);
+        const response = await fetch(process.env.REACT_APP_login, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+        });
+        if (response.ok) {
+            const token = await response.json();
+            console.log("The token is:", token)
+            localStorage.setItem("token", token)
+            document.cookie = cookie.serialize("loggedIn", true, { maxAge: 600});
+            navigate("/");
+            window.location.reload(false);
+        } else {
+            alert("The username or password is incorrect.")
+        }
     }
+
+    // const login = (e) => {
+    //     e.preventDefault();
+    //     document.cookie = cookie.serialize("loggedIn", true, { maxAge: 600});
+    //     navigate("/");
+    //     window.location.reload(false);
+    // }
 
     return (
         <div className="login-page">
@@ -35,8 +59,10 @@ const Login = (props) => {
                 <form className="login-form" onSubmit={login}>
                     <TextField 
                         required
-                        onChange={handleTextChange}
-                        value={state.username}
+                        // onChange={handleTextChange}
+                        onChange={(e) => setUsername(e.target.value)}
+                        // value={state.username}
+                        value={username}
                         name="username"
                         label="Username"
                         type="text"
@@ -44,8 +70,10 @@ const Login = (props) => {
                     />
                     <TextField 
                         required
-                        onChange={handleTextChange}
-                        value={state.password}
+                        // onChange={handleTextChange}
+                        onChange={(e) => setPassword(e.target.value)}
+                        // value={state.password}
+                        value={password}
                         name="password"
                         label="Password"
                         type="password"
