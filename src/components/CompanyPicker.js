@@ -21,7 +21,7 @@ const CompanyPicker2 = (props) => {
             console.log(response.data)
         })
           .catch((error) => console.error(error));
-      }, []);
+      }, [data]);
 
     // This is currently updating my State
     const handleCurrentCompany = (company) => {
