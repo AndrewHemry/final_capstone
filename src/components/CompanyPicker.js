@@ -1,56 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { updateCurrentCompany } from "../redux/actions";
-// import { Link } from "react-router-dom";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-// import { Table, TableContainer, TableBody, TableRow, TableCell, Paper, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
-
-// const CompanyPicker = (props) => {
-    
-//     const dispatch = useDispatch();
-
-//     // This is currently updating my State
-//     const handleCurrentCompany = (company) => {
-//         const currentCompany = { company_id: company.company_id, company_name: company.company_name };
-//         dispatch(updateCurrentCompany(currentCompany));
-//         localStorage.setItem('currentCompany', JSON.stringify(currentCompany))
-//     };    
-
-//     return (
-//         <div className="company-picker">
-//             <TableContainer component={Paper}>
-//                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
-//                     <TableBody>
-//                         {props.available_companies.map((company, idx) => (
-//                             <TableRow
-//                             key={company.company_id}
-//                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-//                             >
-//                                 <TableCell component="th" scope="row">
-//                                     Idea behind this is to update the global state after a company is selected
-//                                     <Link 
-//                                     className="company-link" 
-//                                     to={`/company/${company.company_id}`}
-//                                     onClick={() => handleCurrentCompany(company)}
-//                                     >
-//                                         {company.company_name}
-//                                     </Link>
-//                                 </TableCell>
-//                             </TableRow>
-//                         ))}
-//                     </TableBody>
-//                 </Table>
-//             </TableContainer>
-//         </div>
-//     )
-// }
 
 const CompanyPicker2 = (props) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios
+          .get(process.env.baseURL+"/company")
+          .then((response) => {
+            setData(response.data)
+            console.log(response.data)
+        })
+          .catch((error) => console.error(error));
+      }, []);
 
     // This is currently updating my State
     const handleCurrentCompany = (company) => {
