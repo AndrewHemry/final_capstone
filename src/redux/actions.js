@@ -16,10 +16,17 @@ export const addEmployee = (newEmployee) => {
   }
 }
 
-export const removeEmployee = (index) => {
+// export const removeEmployee = (index) => {
+//   return {
+//     type: "REMOVE_EMPLOYEE",
+//     value: index
+//   }
+// }
+
+export const removeEmployee = (key) => {
   return {
     type: "REMOVE_EMPLOYEE",
-    value: index
+    value: key
   }
 }
 

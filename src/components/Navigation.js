@@ -14,8 +14,6 @@ const Navigation = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const currentCompany = JSON.parse(localStorage.getItem('currentCompany'))
 
-    console.log("The available branches via the Nav Bar is:", props.branches)
-
     useEffect(() => {
         const parsedCookie = cookie.parse(document.cookie);
         setIsLoggedIn(parsedCookie.loggedIn === "true");

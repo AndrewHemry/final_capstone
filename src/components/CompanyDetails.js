@@ -8,8 +8,6 @@ const CompanyDetails = (props) => {
 
     const [activeTab, setActiveTab] = useState(0);
 
-    console.log("The company employees are:", props.employees)
-
     const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
     };    

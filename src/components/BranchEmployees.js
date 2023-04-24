@@ -1,16 +1,8 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import { TableRow, TableCell } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const BranchEmployees = ( {employee, idx, activeTab} ) => {
-
-    console.log("The branch employees are:", employee)
-
-    const handleDelete = (idx) => {
-        console.log("The remove function was clicked, the idx is:", idx)
-        // removeBusiness(idx)
-      };
+const BranchEmployees = ( { employee, activeTab, removeEmployee } ) => {
 
     return (
         <TableRow className="branch-table-cells" key={employee.id}>
@@ -21,8 +13,7 @@ const BranchEmployees = ( {employee, idx, activeTab} ) => {
             <TableCell align="left">
             {activeTab === 0 ? (
                 <DeleteIcon
-                // ACTION ITEM - idx is returning undefined
-                    onClick={() => handleDelete(idx)}
+                    onClick={() => removeEmployee(employee.id)}
                     className="icon text-red"
                 />            
             ) : ( 

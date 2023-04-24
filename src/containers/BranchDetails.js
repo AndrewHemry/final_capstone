@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import BranchDetails from "../components/BranchDetails";
+import { removeEmployee } from "../redux/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -7,6 +8,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-// Remove Admin here
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeEmployee: (key) => dispatch(removeEmployee(key))
+    }
+}
 
-export default connect(mapStateToProps)(BranchDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(BranchDetails)

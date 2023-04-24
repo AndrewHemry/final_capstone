@@ -26,18 +26,42 @@ export default {
     employees: [
         // Action Item - Need to update all the available fields
         {
-            "id": 55,
-            "first_name": "Logan",
-            "last_name": "Hemry",
-            "employee_email": "Logan@gmail.com",
+            "id": 1,
+            "first_name": "1",
+            "last_name": "1",
+            "employee_email": "1@gmail.com",
             "job_title": "Job Title B",
             "is_active": false
         },
         {
-            "id": 56,
-            "first_name": "Tay",
-            "last_name": "Day",
-            "employee_email": "Tay@gmail.com",
+            "id": 2,
+            "first_name": "2",
+            "last_name": "2",
+            "employee_email": "1@gmail.com",
+            "job_title": "Job Title A",
+            "is_active": true
+        },
+        {
+            "id": 3,
+            "first_name": "3",
+            "last_name": "3",
+            "employee_email": "3@gmail.com",
+            "job_title": "Job Title A",
+            "is_active": true
+        },
+        {
+            "id": 4,
+            "first_name": "4",
+            "last_name": "4",
+            "employee_email": "4@gmail.com",
+            "job_title": "Job Title A",
+            "is_active": true
+        },
+        {
+            "id": 5,
+            "first_name": "5",
+            "last_name": "5",
+            "employee_email": "5@gmail.com",
             "job_title": "Job Title A",
             "is_active": true
         }

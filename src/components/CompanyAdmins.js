@@ -5,8 +5,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const CompanyAdmins = (props) => {
 
-    console.log("The company admins are:", props.admins) 
-
     const handleDelete = (idx) => {
         props.removeAdmin(idx)
       };

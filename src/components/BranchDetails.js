@@ -8,11 +8,14 @@ const BranchDetails = (props) => {
     const [activeTab, setActiveTab] = useState(0);
     // ACTION ITEM - I have a feeling that I should be storing the state of the branch directory here...
 
-    console.log("The branch employees are:", props.employees)
-
     const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
-    };    
+    };
+
+    // ACTION ITEM - THIS IS BUGGED
+    const handleRemoveEmployee = (key) => {
+        props.removeEmployee(key - 1)
+    };
 
     return (
 
@@ -44,9 +47,10 @@ const BranchDetails = (props) => {
                             .map((employee, idx) => (
                                 <BranchEmployees
                                     key={employee.id}
-                                    idx={idx}
+                                    // idx={idx}
                                     employee={employee}
                                     activeTab={activeTab}
+                                    removeEmployee={handleRemoveEmployee}
                                  />
                             ))}
                         </TableBody>
@@ -58,7 +62,7 @@ const BranchDetails = (props) => {
                             .map((employee, idx) => (
                                 <BranchEmployees 
                                     key={employee.id}
-                                    idx={idx}
+                                    // idx={idx}
                                     employee={employee}
                                     activeTab={activeTab}
                                 />
