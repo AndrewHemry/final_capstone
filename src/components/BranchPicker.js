@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
+// import axios from "axios";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 
@@ -9,21 +9,21 @@ const BranchPicker = (props) => {
 
     const navigate = useNavigate();
     const currentCompany = JSON.parse(localStorage.getItem('currentCompany'));
-    const companyID = currentCompany.company_id
+    // const companyID = currentCompany.company_id
 
     const [selectedBranch, setSelectedBranch] = useState('');
 
-    const [localBranches, setLocalBranches] = useState([]);
+    // const [localBranches, setLocalBranches] = useState([]);
 
-    useEffect(() => {
-        axios
-          .get(`https://final-capstone-backend-seven.vercel.app/company/${companyID}/branch`)
-          .then((response) => {
-            setLocalBranches(response.data)
-            console.log(response.data)
-        })
-          .catch((error) => console.error(error));
-      }, []);
+    // useEffect(() => {
+    //     axios
+    //       .get(`https://final-capstone-backend-seven.vercel.app/company/${companyID}/branch`)
+    //       .then((response) => {
+    //         setLocalBranches(response.data)
+    //         console.log(response.data)
+    //     })
+    //       .catch((error) => console.error(error));
+    //   }, []);
 
     // This is updating the state when the page is refreshed based on the localStorage data
     useEffect(() => {
