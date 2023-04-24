@@ -15,7 +15,7 @@ const CompanyPicker2 = (props) => {
 
     useEffect(() => {
         axios
-          .get(process.env.REACT_APP_listCompanies)
+          .get("https://final-capstone-backend-seven.vercel.app/company")
           .then((response) => {
             setLocalCompanies(response.data)
             console.log(response.data)
