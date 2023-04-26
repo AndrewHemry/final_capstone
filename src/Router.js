@@ -13,18 +13,22 @@ const checkAuth = () => {
 
 const ProtectedRoute = (props) => {
     const { component: Component, ...rest } = props;
+    if(!checkAuth()){
+        props.setIsLoggedIn(false)
+        localStorage.clear()
+    }
     return (
         checkAuth() === true ? (<Component {...rest} />) : (<Navigate to="/login" />)
     )
 }
 
-const Router = () => {
+const Router = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
         <Routes>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/" element={<ProtectedRoute component={CompanyPicker} />}/>
-            <Route path="/company/:company_id" element={<ProtectedRoute component={CompanyDetails} />}/>
-            <Route path="/company/:company_id/branch/:branch_id" element={<ProtectedRoute component={BranchDetails} />}/>
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
+            <Route path="/" element={<ProtectedRoute setIsLoggedIn={setIsLoggedIn} component={CompanyPicker} />}/>
+            <Route path="/company/:company_id" element={<ProtectedRoute setIsLoggedIn={setIsLoggedIn} component={CompanyDetails} />}/>
+            <Route path="/company/:company_id/branch/:branch_id" element={<ProtectedRoute setIsLoggedIn={setIsLoggedIn} component={BranchDetails} />}/>
         </Routes>
     )
 }

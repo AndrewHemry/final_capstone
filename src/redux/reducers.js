@@ -23,11 +23,14 @@ const employees = (state = [], action) => {
             return [...state, action.value]
         case "REMOVE_EMPLOYEE":
             const newState = [...state]
-            newState.splice(action.value, 1)
+            let index = newState.findIndex(i => i.id === action.value.id);
+            newState.splice(index, 1)
             return newState
+
         // case "INACTIVATE_EMPLOYEE":
         //     console.log("Something here for inactivating employees")
         //     return newState
+
         default:
             return state
     }
@@ -51,8 +54,13 @@ const admins = (state = [], action) => {
             return [...state, action.value]
         case "REMOVE_ADMIN":
             const newState = [...state]
-            newState.splice(action.value, 1)
+            let index = newState.findIndex(i => i.id === action.value.id);
+            newState.splice(index, 1)
             return newState
+
+            // const newState = [...state]
+            // newState.splice(action.value, 1)
+            // return newState
         default:
             return state
     }

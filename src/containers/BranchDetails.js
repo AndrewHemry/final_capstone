@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        removeEmployee: (key) => dispatch(removeEmployee(key))
+        removeEmployee: (employee) => dispatch(removeEmployee(employee))
     }
 }
 

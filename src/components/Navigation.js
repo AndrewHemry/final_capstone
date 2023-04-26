@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import HomeIcon from "./HomeIcon"
@@ -11,12 +11,13 @@ import AddEmployee from "../containers/AddEmployee"
 const Navigation = (props) => {
 
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const currentCompany = JSON.parse(localStorage.getItem('currentCompany'))
 
     useEffect(() => {
+        console.log("Effect ran inside navigation")
         const parsedCookie = cookie.parse(document.cookie);
-        setIsLoggedIn(parsedCookie.loggedIn === "true");
+        props.setIsLoggedIn(parsedCookie.loggedIn === "true");
     }, []);
 
     // When logging out, it should also clear the localStorage
@@ -24,7 +25,8 @@ const Navigation = (props) => {
         document.cookie = cookie.serialize("loggedIn", false, { maxAge: 0 });
         navigate("/login");
         localStorage.clear();
-        window.location.reload(false);
+        props.setIsLoggedIn(false)
+        // window.location.reload(false);
     }
 
     // This is clearing all the localStorage data
@@ -86,7 +88,7 @@ const Navigation = (props) => {
                             null 
                         )}
                         <li className="nav-list-item">
-                            {isLoggedIn ? (
+                            {props.isLoggedIn ? (
                                 <Link className="nav-list-link" to="/" onClick={handleLogout}>Logout</Link>
                             ) : (
                                 <Link className="nav-list-link" to="/login">Login</Link>
@@ -96,7 +98,7 @@ const Navigation = (props) => {
                 </Toolbar>
             </AppBar>
             <div className="current-user-bar">
-                {isLoggedIn ? (
+                {props.isLoggedIn ? (
                     <h4 className="current-user-text">Logged in as: {props.user.username} </h4>
                 ) : null}
             </div>

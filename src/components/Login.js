@@ -49,9 +49,9 @@ const Login = (props) => {
 
     const login = (e) => {
         e.preventDefault();
-        document.cookie = cookie.serialize("loggedIn", true, { maxAge: 600});
+        document.cookie = cookie.serialize("loggedIn", true, { maxAge: 7200});
+        props.setIsLoggedIn(true)
         navigate("/");
-        window.location.reload(false);
     }
 
     return (

@@ -13,7 +13,7 @@ const BranchEmployees = ( { employee, activeTab, removeEmployee } ) => {
             <TableCell align="left">
             {activeTab === 0 ? (
                 <DeleteIcon
-                    onClick={() => removeEmployee(employee.id)}
+                    onClick={() => removeEmployee(employee)}
                     className="icon text-red"
                 />            
             ) : ( 

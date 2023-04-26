@@ -12,9 +12,9 @@ const BranchDetails = (props) => {
         setActiveTab(newValue);
     };
 
-    // ACTION ITEM - THIS IS BUGGED
-    const handleRemoveEmployee = (key) => {
-        props.removeEmployee(key - 1)
+    const handleRemoveEmployee = (employee) => {
+        console.log("The current ID is:", employee)
+        props.removeEmployee(employee)
     };
 
     return (
@@ -40,14 +40,14 @@ const BranchDetails = (props) => {
                             )}
                         </TableRow>
                     </TableHead>
+                    {/* ACTIVE LIST */}
                     {activeTab === 0 && (
                         <TableBody>
                             {props.employees
                             .filter((employee) => employee.is_active === true)
-                            .map((employee, idx) => (
+                            .map((employee) => (
                                 <BranchEmployees
                                     key={employee.id}
-                                    // idx={idx}
                                     employee={employee}
                                     activeTab={activeTab}
                                     removeEmployee={handleRemoveEmployee}
@@ -55,14 +55,14 @@ const BranchDetails = (props) => {
                             ))}
                         </TableBody>
                     )}
+                    {/* INACTIVE LIST */}
                     {activeTab === 1 && (
                         <TableBody>
                             {props.employees
                             .filter((employee) => employee.is_active === false)
-                            .map((employee, idx) => (
+                            .map((employee) => (
                                 <BranchEmployees 
                                     key={employee.id}
-                                    // idx={idx}
                                     employee={employee}
                                     activeTab={activeTab}
                                 />
@@ -77,3 +77,39 @@ const BranchDetails = (props) => {
 }
 
 export default BranchDetails;
+
+ // <TableBody>
+                        // {props.employees
+                        // .filter((employee) => employee.is_active === true)
+                        // .map((employee, idx) => {
+                        //     console.log("Active Employee Key:", employee.id);
+                        //     return (
+                        //     <BranchEmployees 
+                        //         // key={employee.id}
+                        //         idx={idx}
+                        //         employee={employee}
+                        //         activeTab={activeTab}
+                        //         removeEmployee={handleRemoveEmployee}
+                        //     />
+                        //         )
+                        //     })
+                        // }
+// </TableBody>
+
+// <TableBody>
+                        // {props.employees
+                        // .filter((employee) => employee.is_active === false)
+                        // .map((employee, idx) => {
+                        //     console.log("Inactive Employee Key:", employee.id);
+                        //     console.log("Inactive Employee Index:", idx);
+                        //     return (
+                        //     <BranchEmployees 
+                        //         // key={employee.id}
+                        //         idx={idx}
+                        //         employee={employee}
+                        //         activeTab={activeTab}
+                        //     />
+                        //         )
+                        //     })
+                        // }
+// </TableBody>
