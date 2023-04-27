@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import CompanyDetails from "../components/CompanyDetails";
-import { removeAdmin } from "../redux/actions";
+import { removeAdmin, toggleActiveStatusEmployee } from "../redux/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 // Remove Admin here
 const mapDispatchToProps = (dispatch) => {
     return {
-        removeAdmin: (admin) => dispatch(removeAdmin(admin))
+        removeAdmin: (admin) => dispatch(removeAdmin(admin)),
+        toggleActiveStatusEmployee: (employee) => dispatch(toggleActiveStatusEmployee(employee))
     }
 }
 

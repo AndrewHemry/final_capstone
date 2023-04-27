@@ -15,7 +15,6 @@ const Navigation = (props) => {
     const currentCompany = JSON.parse(localStorage.getItem('currentCompany'))
 
     useEffect(() => {
-        console.log("Effect ran inside navigation")
         const parsedCookie = cookie.parse(document.cookie);
         props.setIsLoggedIn(parsedCookie.loggedIn === "true");
     }, []);

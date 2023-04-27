@@ -37,7 +37,7 @@ export default {
             "id": 2,
             "first_name": "2",
             "last_name": "2",
-            "employee_email": "1@gmail.com",
+            "employee_email": "2@gmail.com",
             "job_title": "Job Title A",
             "is_active": true
         },

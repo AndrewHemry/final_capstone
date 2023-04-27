@@ -23,6 +23,13 @@ export const removeEmployee = (employee) => {
   }
 }
 
+export const toggleActiveStatusEmployee = (employee) => {
+  return {
+    type: "TOGGLE_ACTIVE_STATUS_EMPLOYEE",
+    value: employee
+  }
+}
+
 // FOR THE BRANCHES
 export const addBranch = (newBranch) => {
   return {

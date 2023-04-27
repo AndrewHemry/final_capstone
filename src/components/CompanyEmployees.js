@@ -2,7 +2,7 @@ import React from "react";
 import { TableRow, TableCell } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const CompanyEmployees = ( {employee, activeTab, inactivateEmployee} ) => {
+const CompanyEmployees = ( {employee, toggleActiveStatusEmployee} ) => {
 
     return (
 
@@ -13,64 +13,13 @@ const CompanyEmployees = ( {employee, activeTab, inactivateEmployee} ) => {
                 <TableCell align="left">{employee.employee_email}</TableCell>
                 <TableCell align="left">{employee.job_title}</TableCell>
                 <TableCell align="left">
-                {activeTab === 0 ? (
                     <DeleteIcon
-                        onClick={() => inactivateEmployee(employee)}
+                        onClick={() => toggleActiveStatusEmployee(employee)}
                         className="icon text-red"
-                    />            
-                ) : ( 
-                    null 
-                )}
+                    />
                 </TableCell>
             </TableRow>
         )
 }
 
 export default CompanyEmployees;
-
-
-//  <div className="list-body">
-//             <TableContainer component={Paper}>
-//                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
-//                     <TableHead>
-//                     <TableRow>
-//                         <TableCell>Name</TableCell>
-//                         <TableCell>Last Name</TableCell>
-//                         <TableCell>Email</TableCell>
-//                         <TableCell>Job Title</TableCell>
-//                         {/* Active Status will eventually be removed */}
-//                         <TableCell align="left">Active Status</TableCell>
-//                         <TableCell align="left">Inactivate</TableCell>
-//                     </TableRow>
-//                     </TableHead>
-//                     <TableBody>
-//                     {props.employees.map((employee, idx) => (
-//                         <TableRow
-//                         key={employee.id}
-//                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-//                         >
-//                             ACTION ITEM - This can be an employee detail page
-//                             <TableCell component="th" scope="row">
-//                                 <Link className="business-link" to={`/business/${business.id}`}>{business.Name}</Link>
-//                             </TableCell>
-//                             <TableCell align="left">{employee.first_name}</TableCell>
-//                             <TableCell align="left">{employee.last_name}</TableCell>
-//                             <TableCell align="left">{employee.employee_email}</TableCell>
-//                             <TableCell align="left">{employee.job_title}</TableCell>
-//                             {employee.is_active === true ? (
-//                                 <TableCell align="left">Active</TableCell>
-//                             ) : (
-//                                 <TableCell align="left">False</TableCell>
-//                             )}
-//                             <TableCell align="left">
-//                                 <DeleteIcon
-//                                     onClick={() => handleDelete(idx)}
-//                                     className="icon text-red"
-//                                 />
-//                             </TableCell>
-//                         </TableRow>
-//                     ))}
-//                     </TableBody>
-//                 </Table>
-//             </TableContainer>
-//         </div>

@@ -12,13 +12,11 @@ const CompanyDetails = (props) => {
         setActiveTab(newValue);
     };
 
-    const handleInactivateEmployee = (employee) => {
-        console.log("The current ID is:", employee)
-        props.inactivateEmployee(employee)
+    const handleToggleActiveStatusEmployee = (employee) => {
+        props.toggleActiveStatusEmployee(employee)
     };
 
     const handleRemoveAdmin = (admin) => {
-        console.log("The current ID is:", admin)
         props.removeAdmin(admin)
     }
 
@@ -43,13 +41,18 @@ const CompanyDetails = (props) => {
                         ) : ( 
                             null 
                         )}
+                        {activeTab === 0 ? (
+                            <TableCell align="left">Inactivate</TableCell>
+                        ) : ( 
+                            null 
+                        )}
                         {activeTab === 1 ? (
                             <TableCell>Remove from Company</TableCell>
                         ) : ( 
                             null 
                         )}
-                        {activeTab === 0 ? (
-                            <TableCell align="left">Inactivate</TableCell>
+                        {activeTab === 2 ? (
+                            <TableCell align="left">Activate</TableCell>
                         ) : ( 
                             null 
                         )}
@@ -65,7 +68,7 @@ const CompanyDetails = (props) => {
                                 key={employee.id}
                                 employee={employee}
                                 activeTab={activeTab}
-                                inactivateEmployee={handleInactivateEmployee}
+                                toggleActiveStatusEmployee={handleToggleActiveStatusEmployee}
                              />
                         ))}
                     </TableBody>
@@ -94,6 +97,7 @@ const CompanyDetails = (props) => {
                                 key={employee.id}
                                 employee={employee}
                                 activeTab={activeTab}
+                                toggleActiveStatusEmployee={handleToggleActiveStatusEmployee}
                             />
                         ))}
                     </TableBody>

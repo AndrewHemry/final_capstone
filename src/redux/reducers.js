@@ -16,7 +16,6 @@ const branches = (state = [], action) => {
     }
 }
 
-// ACTION ITEM - State needs to be updated to allow for the case switches of add/removing/inactivating
 const employees = (state = [], action) => {
     switch(action.type) {
         case "ADD_EMPLOYEE":
@@ -27,9 +26,19 @@ const employees = (state = [], action) => {
             newState.splice(index, 1)
             return newState
 
-        // case "INACTIVATE_EMPLOYEE":
-        //     console.log("Something here for inactivating employees")
-        //     return newState
+        case "TOGGLE_ACTIVE_STATUS_EMPLOYEE":
+            const toggledEmployeeState = [...state]
+            let toggledEmployeeIndex = toggledEmployeeState.findIndex(i => i.id === action.value.id)
+            toggledEmployeeState[toggledEmployeeIndex] = action.value = {
+                id: action.value.id,
+                first_name: action.value.first_name,
+                last_name: action.value.last_name,
+                employee_email: action.value.employee_email,
+                job_title: action.value.job_title,
+                is_active: !action.value.is_active
+            }
+            console.log("The updated state is", toggledEmployeeState)
+            return toggledEmployeeState
 
         default:
             return state
